@@ -1,0 +1,12 @@
+INT 1
+INT 1
+ADD
+INT 1
+INT 2
+SUB
+ADD
+INT 1
+MOD
+STR A test string here
+OUT
+OUT

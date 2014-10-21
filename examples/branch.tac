@@ -1,0 +1,8 @@
+INT 3
+INT 0
+JEQ 4
+INT 2
+INT 2
+JMP -3 
+STR End Loop Test
+DMR
