@@ -2,6 +2,7 @@
     "name": "errant/tacit",
     "description": "A Simple ByteCode VM in PHP",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tom Morton",
@@ -13,5 +14,6 @@
     },
     "autoload": {
         "psr-4": { "Tacit\\":  "src" }
-    }
+    },
+    "bin": ["bin/tacit"]
 }
