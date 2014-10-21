@@ -10,6 +10,16 @@ Implementing a VM (and indeed a language) in PHP is silly, it's slow and limited
 
 Tacit was built with the aim of being a safe, sandboxed scripting VM for a PHP-based game. Yes, a ridiculous notion but one that works surprisingly well for simple applications.
 
+Get Started
+======
+
+- Clone the Repository
+- Browse the examples folder
+- Try an example:
+```
+bin/tacit examples/simple.tac
+```
+
 Future
 ======
 
@@ -19,10 +29,6 @@ The aim is for Tacit to expand to be more featureful, on the list is:
 * Expanding the Tac language with more complex commands
 * The addition of a higher-level scripting language (& compiler) similar to Ruby/Python
 
-Get Started
-======
-
-- Clone the Repository
-- Browse the examples folder
-- Try and example:
-    bin/tacit examples/simple.tac
+More
+=======
+* [Documentation](https://github.com/errant/tacit/wiki)
