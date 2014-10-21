@@ -1,5 +1,5 @@
 {
-    "name": "Tacit",
+    "name": "errant/tacit",
     "description": "A Simple ByteCode VM in PHP",
     "type": "project",
     "authors": [
