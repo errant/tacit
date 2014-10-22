@@ -1,5 +1,7 @@
 Tacit
 =====
+[![Build Status](https://travis-ci.org/errant/tacit.png?branch=master)](https://travis-ci.org/errant/tacit) 
+[![Code Coverage](https://codeclimate.com/github/errant/tacit/badges/coverage.svg)](https://codeclimate.com/github/errant/tacit)
 
 Tacit is:
 
