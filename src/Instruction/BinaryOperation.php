@@ -20,6 +20,6 @@ class BinaryOperation extends \Tacit\Instruction {
 
 	public function transform($left, $right)
 	{
-		return false;
+		throw new \Exception('Instruction Error: instruction does not implement transform');
 	}
 }
