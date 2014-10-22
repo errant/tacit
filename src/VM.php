@@ -13,37 +13,54 @@ namespace Tacit;
 class VM {
 
 	protected $instructions = array();
-	protected $bytecode = array();
 	protected $memoryMax = array();
+	protected $running;
+	public $bytecode = array();
 
-	public function __construct(\Tacit\InstructionSet $instructionSet, $memoryMax=256, $stackSize = 128)
+	public function __construct(\Tacit\InstructionSet $instructionSet, $memoryMax=2048, $stackSize = 1024)
 	{
 		$this->memory = new \Tacit\Memory\Store($memoryMax);
 		$this->stack = new \Tacit\Stack($this->memory, $stackSize);
+		$this->execution = new \Tacit\Stack($this->memory, 10);
 		$this->instructionSet = $instructionSet;
 	}
 
 	/**
-	 * Execute some ByteCode
-	 *
-	 * @param array $bytecode Array of Bytes
+	 * Terminate the VM
 	 */
-	public function interpret($bytecode, $debug=false)
+	public function terminate()
 	{
-		$this->memory->reserveBytes(count($bytecode));
+		$this->running = false;
+	} 
 
-		$this->bytecode = $bytecode;
+	/**
+	 * Boot VM
+	 */
+	public function boot()
+	{
+		# Bootloader
+		$bootloader = $this->memory->get(0x00);
+		$this->bytecode = $bootloader->getData();
 
-		for($this->pointer=0; $this->pointer < count($this->bytecode); $this->pointer++) {
+		$this->run();
+	}
+
+	public function run()
+	{
+
+		$this->running = true;
+		$this->pointer = 0;
+
+		while($this->pointer < count($this->bytecode)) {
+			if(!$this->running) {
+				break;
+			}
 			$byte = $this->bytecode[$this->pointer];
 			$instruction = $this->instructionSet->getInstruction($byte);
 			$instruction->execute($this);
-			if($debug) {
-				echo $instruction->command . "\n";
-				echo "NXT: {$this->pointer}\n";
-				sleep(1);
-			}
+			$this->pointer++;
 		}
+
 	}
 
 	public function getByte($pointer=null)

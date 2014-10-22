@@ -44,6 +44,22 @@ class Store {
 		return $block;
 	}
 
+	public function get($address)
+	{
+		if(!array_key_exists($address, $this->store)) {
+			throw new \Exception('Empty address');
+		}
+
+		return $this->store[$address];
+	}
+
+	public function free($address)
+	{
+		$block = $this->get($address);
+		unset($this->store[$address]);
+		$this->releaseBytes($block->getSize());
+	}
+
 	public function reserveBytes($number)
 	{
 		if(($this->size + $number) > $this->max) {
@@ -61,8 +77,4 @@ class Store {
 		}
 	}
 
-	public function free()
-	{
-		return ($this->max - $this->size);
-	}
 }

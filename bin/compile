@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+require 'vendor/autoload.php';
+
+$lang = new \Tacit\Language\Basic;
+
+$source = file_get_contents($argv[1]);
+
+$tokens = \Tacit\Lexer\Tac::run($source);
+
+$bytecode = \Tacit\Compiler\Tac::run($tokens, $lang->getGrammar());
+
+foreach($bytecode as $byte) {
+	echo "0x" . sprintf('%02X',$byte) . "\n";
+}

@@ -45,15 +45,6 @@ class MemoryTest extends PHPUnit_Framework_TestCase
 
     /**
      * @depends testReserveBytes
-     */
-    public function testGetFree()
-    {
-        $memory = new \Tacit\Memory\Store(256);
-        $this->assertEquals(256, $memory->free());
-    }
-
-    /**
-     * @depends testReserveBytes
      * @expectedException Exception
      * @expectedExceptionMessage Out of Memory Error
      */

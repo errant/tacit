@@ -10,3 +10,6 @@ MOD
 STR A test string here
 OUT
 OUT
+RTN
+INT 1
+OUT

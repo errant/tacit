@@ -11,7 +11,7 @@ class Inc extends \Tacit\Instruction\UnaryOperation {
 
 	public function transform($operand, $vm)
 	{
-		$vm->stack->push($operand++);
+		$vm->stack->push($operand += 1);
 	}
 }
 

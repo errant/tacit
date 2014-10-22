@@ -4,11 +4,25 @@ require 'vendor/autoload.php';
 
 $lang = new \Tacit\Language\Basic;
 
-$source = file_get_contents($argv[1]);
+/*$source = file_get_contents($argv[1]);*/
+
+$source = file_get_contents('examples/bootloader.tac');
 
 $tokens = \Tacit\Lexer\Tac::run($source);
 
 $bytecode = \Tacit\Compiler\Tac::run($tokens, $lang->getGrammar());
 
 $vm = new \Tacit\VM($lang);
-$vm->interpret($bytecode,true);
+$bootloader = $vm->memory->store(0x00, $bytecode);
+$bootloader->protect();
+
+$source = file_get_contents($argv[1]);
+$tokens = \Tacit\Lexer\Tac::run($source);
+$bytecode = \Tacit\Compiler\Tac::run($tokens, $lang->getGrammar());
+
+$checkbit = $vm->memory->store(0x01, array(count($bytecode)));
+$checkbit->protect();
+$program = $vm->memory->store(0x02, $bytecode);
+$program->protect();
+
+$vm->boot();

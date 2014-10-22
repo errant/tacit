@@ -20,6 +20,11 @@ class Stack {
 		$this->memory = $memory;
 	}
 
+	public function inspect()
+	{
+		return $this->stack;
+	}
+
 	public function push($value)
 	{
 		if(count($this->stack) >= $this->size) {
@@ -42,6 +47,14 @@ class Stack {
 		$this->memory->releaseBytes(count($value));
 
 		return $value;
+	}
+
+	public function clear()
+	{
+		$data = $this->stack;
+		$this->stack = array();
+		$this->memory->releaseBytes(count($data));
+		return $data;
 	}
 
 	public function describe()

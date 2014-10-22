@@ -10,6 +10,12 @@ class Basic extends \Tacit\InstructionSet {
 	public function __construct()
 	{
 		$this->instructions = array(
+			// 0-9: Command Structure
+			0x00 => new \Tacit\Instruction\Command\Exe,
+			0x01 => new \Tacit\Instruction\Command\End,
+			0x02 => new \Tacit\Instruction\Command\Slp,
+			0x03 => new \Tacit\Instruction\Command\Wtf,
+			0x04 => new \Tacit\Instruction\Command\Rtn,
 			// 10-19: Data Types
 			0x0A => new \Tacit\Instruction\Type\Int,
 			0x0B =>	new \Tacit\Instruction\Type\Str,
@@ -18,6 +24,7 @@ class Basic extends \Tacit\InstructionSet {
 			0x14 =>	new \Tacit\Instruction\IO\Out,
 			0x15 =>	new \Tacit\Instruction\IO\Dmp,
 			0x16 =>	new \Tacit\Instruction\IO\Dmr,
+			0x17 =>	new \Tacit\Instruction\IO\PRN,
 			// 30-39: Basic Mathematical Operators
 			0x1E => new \Tacit\Instruction\Math\Add,
 			0x1F => new \Tacit\Instruction\Math\Sub,
@@ -44,6 +51,11 @@ class Basic extends \Tacit\InstructionSet {
 			0x30
 			0x31
 			*/		
+			// 50-59: Memory Manipulation
+			0x32 => new \Tacit\Instruction\Memory\Mld,
+			0x33 => new \Tacit\Instruction\Memory\Msv,
+			0x34 => new \Tacit\Instruction\Memory\Msz,
+			0x35 => new \Tacit\Instruction\Memory\Mdl,
 		);
 	}
 }

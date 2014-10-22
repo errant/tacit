@@ -6,3 +6,4 @@ INT 2
 JMP -3 
 STR End Loop Test
 DMR
+RTN

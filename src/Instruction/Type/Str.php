@@ -9,7 +9,7 @@ class Str extends \Tacit\Instruction {
 
 	public $command = 'STR';
 
-	public function execute($vm)
+	protected function getString($vm)
 	{
 		$vm->pointer++;
 		$end = $vm->pointer + $vm->getByte();
@@ -18,13 +18,18 @@ class Str extends \Tacit\Instruction {
 			$vm->pointer++;
 			$char .= chr($vm->getByte());
 		}
-		$vm->stack->push($char);
+		return $char;
+	}
+
+	public function execute($vm)
+	{
+		$vm->stack->push($this->getString($vm));
 	}
 
 	public function compile(&$bytestream, $byte, $command)
 	{
 		if(!isset($command['T_OPERAND'])) {
-			throw new \Exception('Type string expects string as operand');
+			throw new \Exception('Type ' . $this->command . ' expects string as operand');
 		}
 
 		$bytestream[] = $byte;
@@ -36,6 +41,5 @@ class Str extends \Tacit\Instruction {
 		foreach($stringChars as $char) {
 			$bytestream[] = ord($char);
 		}
-
 	}
 }
