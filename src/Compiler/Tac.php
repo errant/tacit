@@ -27,7 +27,11 @@ class Tac {
 			list($byte, $instruction) = $grammar[$command['T_CMD']];
 			// 
 			$vectors[$i] = count($bytestream);
-			$instruction->compile($bytestream, $byte, $command, $targets, $i);
+			$result = $instruction->compile($bytestream, $byte, $command);
+			if(is_array($result)) {
+				list($target, $uuid) = $result;
+				$targets[$uuid] = $i + $target;
+			}
 		}
 		// resolve targets
 		$bytestream = array_map(function($byte) use($vectors, $targets) { return array_key_exists($byte,$targets) ? $vectors[$targets[$byte]] - 1 : $byte; }, $bytestream);

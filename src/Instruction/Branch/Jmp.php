@@ -15,7 +15,7 @@ class Jmp extends \Tacit\Instruction {
 		$vm->pointer = $vm->getByte();
 	}
 
-	public function compile(&$bytestream, $byte, $command, &$targets, $i)
+	public function compile(&$bytestream, $byte, $command)
 	{
 		if(!isset($command['T_OPERAND'])) {
 			throw new \Exception('Type ' . $this->command . ' expects an operand');
@@ -27,11 +27,10 @@ class Jmp extends \Tacit\Instruction {
 
 		$bytestream[] = $byte;
 
-		$target = $i + (int) $command['T_OPERAND'];
 		$uuid = uniqid();
-
-		$targets[$uuid] = $target;
 		$bytestream[] = $uuid;
+
+		return array((int) $command['T_OPERAND'], $uuid);
 
 	}
 }
