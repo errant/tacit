@@ -10,6 +10,9 @@ class Stack {
 	protected $size;
 	protected $stack = array();
 
+	/**
+	 * @param Memory\Store $memory
+	 */
 	public function __construct($memory, $stackSize=128) {
 
 		if(!is_integer($stackSize)) {
