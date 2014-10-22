@@ -9,6 +9,11 @@ class MemoryStore {
 		$this->max = $max;
 	}
 
+	public function getLimit()
+	{
+		return $this->max;
+	}
+
 	public function getSize()
 	{
 		return $this->size;
