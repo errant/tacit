@@ -7,6 +7,9 @@ class Store {
 
 	protected $store = array();
 
+	/**
+	 * @param integer $max
+	 */
 	public function __construct($max) {
 		$this->max = $max;
 	}
@@ -60,6 +63,9 @@ class Store {
 		$this->releaseBytes($block->getSize());
 	}
 
+	/**
+	 * @param integer $number
+	 */
 	public function reserveBytes($number)
 	{
 		if(($this->size + $number) > $this->max) {
