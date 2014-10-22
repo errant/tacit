@@ -23,11 +23,6 @@ class Stack {
 		$this->memory = $memory;
 	}
 
-	public function inspect()
-	{
-		return $this->stack;
-	}
-
 	public function push($value)
 	{
 		if(count($this->stack) >= $this->size) {
