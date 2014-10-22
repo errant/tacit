@@ -15,7 +15,7 @@ class Jgt extends \Tacit\Instruction\Branch\Jmp {
 		$right = $vm->stack->pop();
 		$vm->pointer++;
 		if($left > $right) {
-			$vm->pointer = $vm->getByte());
+			$vm->pointer = $vm->getByte();
 		}
 	}
 
