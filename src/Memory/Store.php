@@ -1,6 +1,6 @@
 <?php
-namespace Tacit;
-class MemoryStore {
+namespace Tacit\Memory;
+class Store {
 
 	protected $max;
 	protected $size = 0;

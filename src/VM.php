@@ -18,7 +18,7 @@ class VM {
 
 	public function __construct(\Tacit\InstructionSet $instructionSet, $memoryMax=256, $stackSize = 128)
 	{
-		$this->memory = new \Tacit\MemoryStore($memoryMax);
+		$this->memory = new \Tacit\Memory\Store($memoryMax);
 		$this->stack = new \Tacit\Stack($this->memory, $stackSize);
 		$this->instructionSet = $instructionSet;
 	}
