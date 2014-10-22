@@ -13,7 +13,7 @@ class Jez extends \Tacit\Instruction\Branch\Jmp {
 	{
 		$vm->pointer++;
 		if($vm->stack->pop() == 0) {
-			$vm->pointer = $vm->getByte() - 1;
+			$vm->pointer = $vm->getByte();
 		}
 	}
 

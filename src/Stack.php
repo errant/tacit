@@ -9,6 +9,7 @@ class Stack {
 
 	protected $size;
 	protected $stack = array();
+	protected $memory;
 
 	/**
 	 * @param Memory\Store $memory

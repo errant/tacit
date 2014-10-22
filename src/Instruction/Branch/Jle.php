@@ -15,7 +15,7 @@ class Jle extends \Tacit\Instruction\Branch\Jmp {
 		$right = $vm->stack->pop();
 		$vm->pointer++;
 		if($left <= $right) {
-			$vm->pointer = $vm->getByte() - 1;
+			$vm->pointer = $vm->getByte();
 		}
 	}
 

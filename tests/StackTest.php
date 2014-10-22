@@ -43,4 +43,42 @@ class StackTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(456, $stack->pop());
     }
 
+    public function testDescribe()
+    {
+        $stack = new \Tacit\Stack($this->memory, 128);
+        $stack->push(123);
+        $stack->push(456);
+        $this->assertEquals(array(123, 456), $stack->describe());
+    }
+
+    public function testClear()
+    {
+        $stack = new \Tacit\Stack($this->memory, 128);
+        $stack->push(123);
+        $stack->push(456);
+        $this->assertEquals(array(123, 456), $stack->clear());
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Stack Empty
+     */
+    public function testStackEmpty()
+    {
+        $stack = new \Tacit\Stack($this->memory, 128);
+        $stack->pop();
+    }
+
+    /**
+     * @expectedException Exception
+     * @expectedExceptionMessage Stack Overflow
+     */
+    public function testStackOverflow()
+    {
+        $stack = new \Tacit\Stack($this->memory, 1);
+        $stack->push(1);
+        $stack->push(1);
+    }
+
+
 }
