@@ -24,7 +24,7 @@ class Basic extends \Tacit\InstructionSet {
 			0x14 =>	new \Tacit\Instruction\IO\Out,
 			0x15 =>	new \Tacit\Instruction\IO\Dmp,
 			0x16 =>	new \Tacit\Instruction\IO\Dmr,
-			0x17 =>	new \Tacit\Instruction\IO\PRN,
+			0x17 =>	new \Tacit\Instruction\IO\Prn,
 			// 30-39: Basic Mathematical Operators
 			0x1E => new \Tacit\Instruction\Math\Add,
 			0x1F => new \Tacit\Instruction\Math\Sub,
