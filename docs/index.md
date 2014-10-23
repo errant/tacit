@@ -1,5 +1,8 @@
 Tacit
 =====
+[![Build Status](https://travis-ci.org/errant/tacit.png?branch=master)](https://travis-ci.org/errant/tacit) 
+[![Code Coverage](https://codeclimate.com/github/errant/tacit/badges/coverage.svg)](https://codeclimate.com/github/errant/tacit)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/errant/tacit/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/errant/tacit/?branch=master)
 
 Tacit is:
 
@@ -20,3 +23,15 @@ Get Started
 bin/tacit examples/simple.tac
 ```
 
+Future
+======
+
+The aim is for Tacit to expand to be more featureful, on the list is:
+
+* Adding registers to the VM
+* Expanding the Tac language with more complex commands
+* The addition of a higher-level scripting language (& compiler) similar to Ruby/Python
+
+More
+=======
+* [Documentation](https://github.com/errant/tacit/wiki)
